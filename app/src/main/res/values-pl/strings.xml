@@ -113,6 +113,7 @@
     <string name="app_language_russian">Русский</string>
     <string name="app_language_polish">Polski</string>
     <string name="app_language_indonesian">Bahasa Indonesia</string>
+    <string name="app_language_spanish">Español</string>
     <string name="assistant_language_title">Język odpowiedzi</string>
     <string name="assistant_language_hint">Język, w którym odpowiada asystent. „Auto” oznacza język, w którym mówisz.</string>
     <string name="language_auto">Auto</string>
@@ -121,6 +122,7 @@
     <string name="language_russian">Rosyjski</string>
     <string name="language_polish">Polski</string>
     <string name="language_indonesian">Indonezyjski</string>
+    <string name="language_spanish">Hiszpański</string>
     <string name="dialect_title">Dialekt arabski</string>
     <string name="dialect_hint">Jakim arabskim mówi asystent, gdy odpowiada po arabsku. „Jak ja” dopasowuje się do Twojej mowy. Zmiana zadziała od następnej rozmowy.</string>
     <string name="dialect_match">Jak ja</string>

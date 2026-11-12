@@ -24,6 +24,7 @@ data class VehicleCommand(
     val labelRu: String? = null,
     val labelPl: String? = null,
     val labelId: String? = null,
+    val labelEs: String? = null,
     val invocation: VehicleInvocation,
     val parameter: VehicleParameter,
     /** For [VehicleInvocation.GenericFeatureSet]: the *state* id that reports what [featureId] (a
@@ -85,7 +86,7 @@ val VehicleCommand.needsCarLink: Boolean get() = invocation !is VehicleInvocatio
 data class ValueOverride(val whenValue: Int, val featureId: Int, val sendValue: Int, val featureName: String? = null)
 
 /**
- * The name to show for this command in the language with this tag ("ar", "ru", "pl", "id"/"in"; any other is English), falling back to
+ * The name to show for this command in the language with this tag ("ar", "ru", "pl", "id"/"in", "es"; any other is English), falling back to
  * [VehicleCommand.displayName].
  */
 fun VehicleCommand.labelFor(languageTag: String): String = when (languageTag) {
@@ -94,6 +95,7 @@ fun VehicleCommand.labelFor(languageTag: String): String = when (languageTag) {
     "pl" -> labelPl
     // Android reports Indonesian as "in" (its legacy code); "id" is the current one.
     "id", "in" -> labelId
+    "es" -> labelEs
     else -> label
 } ?: displayName
 

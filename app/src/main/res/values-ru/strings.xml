@@ -113,6 +113,7 @@
     <string name="app_language_russian">Русский</string>
     <string name="app_language_polish">Polski</string>
     <string name="app_language_indonesian">Bahasa Indonesia</string>
+    <string name="app_language_spanish">Español</string>
     <string name="assistant_language_title">Язык ответов</string>
     <string name="assistant_language_hint">Язык, на котором отвечает ассистент. «Авто» — на том языке, на котором вы говорите.</string>
     <string name="language_auto">Авто</string>
@@ -121,6 +122,7 @@
     <string name="language_russian">Русский</string>
     <string name="language_polish">Польский</string>
     <string name="language_indonesian">Индонезийский</string>
+    <string name="language_spanish">Испанский</string>
     <string name="dialect_title">Диалект арабского</string>
     <string name="dialect_hint">Какой арабский используется, когда ассистент отвечает по-арабски. «Как у меня» подстраивается под вашу речь. Вступает в силу со следующего разговора.</string>
     <string name="dialect_match">Как у меня</string>

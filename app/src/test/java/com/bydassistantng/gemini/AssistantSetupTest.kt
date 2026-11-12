@@ -153,7 +153,7 @@ class AssistantSetupTest {
 
     @Test
     fun aFixedReplyLanguageIsSaidAsAFirmRuleAtTheStartAndAgainAtTheEnd() {
-        for ((language, name) in listOf(AssistantLanguage.ARABIC to "Arabic", AssistantLanguage.ENGLISH to "English", AssistantLanguage.RUSSIAN to "Russian", AssistantLanguage.POLISH to "Polish", AssistantLanguage.INDONESIAN to "Indonesian")) {
+        for ((language, name) in listOf(AssistantLanguage.ARABIC to "Arabic", AssistantLanguage.ENGLISH to "English", AssistantLanguage.RUSSIAN to "Russian", AssistantLanguage.POLISH to "Polish", AssistantLanguage.INDONESIAN to "Indonesian", AssistantLanguage.SPANISH to "Spanish")) {
             val prompt = voiceAssistantSystemPrompt(language, conversation = true)
             assertTrue(prompt.contains("Always reply in $name."))
             assertTrue(prompt.endsWith("ask the user in $name to say it again."))
@@ -201,7 +201,7 @@ class AssistantSetupTest {
             val prompt = voiceAssistantSystemPrompt(language)
             assertTrue(prompt, prompt.contains("natural, everyday Bahasa Indonesia"))
         }
-        for (language in listOf(AssistantLanguage.ENGLISH, AssistantLanguage.ARABIC, AssistantLanguage.RUSSIAN, AssistantLanguage.POLISH)) {
+        for (language in listOf(AssistantLanguage.ENGLISH, AssistantLanguage.ARABIC, AssistantLanguage.RUSSIAN, AssistantLanguage.POLISH, AssistantLanguage.SPANISH)) {
             assertTrue(!voiceAssistantSystemPrompt(language).contains("Bahasa Indonesia"))
         }
     }
@@ -219,10 +219,33 @@ class AssistantSetupTest {
     }
 
     @Test
+    fun spanishIsAskedToSoundNaturalOnlyWhenTheAssistantMaySpeakIt() {
+        for (language in listOf(AssistantLanguage.AUTO, AssistantLanguage.SPANISH)) {
+            val prompt = voiceAssistantSystemPrompt(language)
+            assertTrue(prompt, prompt.contains("natural, everyday Spanish"))
+        }
+        for (language in listOf(AssistantLanguage.ENGLISH, AssistantLanguage.ARABIC, AssistantLanguage.RUSSIAN, AssistantLanguage.POLISH, AssistantLanguage.INDONESIAN)) {
+            assertTrue(!voiceAssistantSystemPrompt(language).contains("everyday Spanish"))
+        }
+    }
+
+    @Test
+    fun aSpanishReplyIsOnlyRuledOutByAnotherScript() {
+        assertEquals(true, ReplyLanguage.matches(AssistantLanguage.SPANISH, "Listo, la ventanilla está abierta. BYD"))
+        // A short Spanish reply may have no accented letter at all, so Latin text is never proved wrong.
+        assertEquals(true, ReplyLanguage.matches(AssistantLanguage.SPANISH, "Listo."))
+        assertEquals(false, ReplyLanguage.matches(AssistantLanguage.SPANISH, "Хорошо, окно открыто"))
+        assertEquals(false, ReplyLanguage.matches(AssistantLanguage.SPANISH, "تمام، فتحت النافذة"))
+        // Spanish is not English: its accented letters show.
+        assertEquals(false, ReplyLanguage.matches(AssistantLanguage.ENGLISH, "Cerré la ventanilla"))
+        assertNull(ReplyLanguage.matches(AssistantLanguage.SPANISH, "..."))
+    }
+
+    @Test
     fun theAutomaticLanguageNamesRussianAmongTheOnesItFollows() {
         val auto = voiceAssistantSystemPrompt(AssistantLanguage.AUTO)
-        assertTrue(auto, auto.contains("English, Arabic, Russian, Polish or Indonesian"))
-        assertTrue(auto, auto.contains("speaks Arabic (in any dialect), Russian, Polish, Indonesian and English"))
+        assertTrue(auto, auto.contains("English, Arabic, Russian, Polish, Indonesian or Spanish"))
+        assertTrue(auto, auto.contains("speaks Arabic (in any dialect), Russian, Polish, Indonesian, Spanish and English"))
     }
 
     @Test

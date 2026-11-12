@@ -165,7 +165,7 @@ in step with [exterior-speaker.md](docs/byd-internals/exterior-speaker.md) and
 
 ## Translations
 
-All text is in `app/src/main/res/values/strings.xml`; Arabic (`values-ar`), Russian (`values-ru`), Polish (`values-pl`) and Indonesian (`values-in`, the legacy code Android still uses for Indonesian) are there already.
+All text is in `app/src/main/res/values/strings.xml`; Arabic (`values-ar`), Russian (`values-ru`), Polish (`values-pl`), Indonesian (`values-in`, the legacy code Android still uses for Indonesian) and Spanish (`values-es`) are there already.
 Add `values-<code>/strings.xml` with the **same keys and placeholders** (a test checks this), and add the command
 labels to the registry (`label<Code>` in `vehicle_commands.json`, `labelFor` in `VehicleCommand.kt`). A new language
 the assistant is to speak also goes into `AssistantLanguage`, the prompt in `ConversationShared.kt` and the app language

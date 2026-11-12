@@ -117,6 +117,7 @@
     <string name="app_language_russian">Русский</string>
     <string name="app_language_polish">Polski</string>
     <string name="app_language_indonesian">Bahasa Indonesia</string>
+    <string name="app_language_spanish">Español</string>
     <string name="assistant_language_title">Bahasa balasan</string>
     <string name="assistant_language_hint">Bahasa yang digunakan asisten untuk menjawab. Otomatis mengikuti bahasa yang Anda ucapkan.</string>
     <string name="language_auto">Otomatis</string>
@@ -125,6 +126,7 @@
     <string name="language_russian">Rusia</string>
     <string name="language_polish">Polandia</string>
     <string name="language_indonesian">Indonesia</string>
+    <string name="language_spanish">Spanyol</string>
     <string name="dialect_title">Dialek Arab</string>
     <string name="dialect_hint">Bahasa Arab mana yang digunakan saat menjawab dalam bahasa Arab. “Ikuti saya” menyesuaikan cara Anda berbicara. Berlaku pada percakapan berikutnya.</string>
     <string name="dialect_match">Ikuti saya</string>

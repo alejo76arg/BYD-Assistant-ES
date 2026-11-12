@@ -387,6 +387,7 @@ internal fun AppPane(
                 ChoiceOption(AppLanguageChoice.RUSSIAN.name, stringResource(R.string.app_language_russian)),
                 ChoiceOption(AppLanguageChoice.POLISH.name, stringResource(R.string.app_language_polish)),
                 ChoiceOption(AppLanguageChoice.INDONESIAN.name, stringResource(R.string.app_language_indonesian)),
+                ChoiceOption(AppLanguageChoice.SPANISH.name, stringResource(R.string.app_language_spanish)),
             ),
             selectedKey = appLanguage.name,
             onSelect = { key ->
@@ -428,6 +429,7 @@ internal fun AppPane(
                         AppLanguageChoice.RUSSIAN -> stringResource(R.string.app_language_russian)
                         AppLanguageChoice.POLISH -> stringResource(R.string.app_language_polish)
                         AppLanguageChoice.INDONESIAN -> stringResource(R.string.app_language_indonesian)
+                        AppLanguageChoice.SPANISH -> stringResource(R.string.app_language_spanish)
                     },
                     onClick = { showAppLanguageChoice = true },
                 )

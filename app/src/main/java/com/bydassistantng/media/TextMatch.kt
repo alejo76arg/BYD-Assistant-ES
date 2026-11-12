@@ -22,6 +22,23 @@ internal object TextMatch {
         else -> c
     }
 
+    /**
+     * A Spanish letter as the plain Latin one it is written with when the accents are left off ("cámara" and "camara",
+     * "año" and "ano"). NFKC keeps these letters whole too, so they need the same fold as the Polish ones. "ó" is already
+     * folded by [foldPolish]. Any other letter is returned as it is.
+     */
+    fun foldSpanish(c: Char): Char = when (c) {
+        'á' -> 'a'
+        'é' -> 'e'
+        'í' -> 'i'
+        'ú', 'ü' -> 'u'
+        'ñ' -> 'n'
+        else -> c
+    }
+
+    /** The plain Latin letter for a Polish or Spanish accented one, so a name matches with or without its accents. */
+    fun foldLatin(c: Char): Char = foldSpanish(foldPolish(c))
+
     /** Lower case, letters and digits only, one space between words; marks that sit on letters (Arabic) are dropped. */
     fun normalize(text: String): String {
         val out = StringBuilder()
@@ -32,7 +49,7 @@ internal object TextMatch {
                 Character.isLetterOrDigit(ch) -> {
                     if (pendingSpace && out.isNotEmpty()) out.append(' ')
                     pendingSpace = false
-                    out.append(foldPolish(ch))
+                    out.append(foldLatin(ch))
                 }
                 else -> pendingSpace = true
             }

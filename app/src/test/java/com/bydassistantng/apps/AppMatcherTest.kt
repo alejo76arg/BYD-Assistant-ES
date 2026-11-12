@@ -54,6 +54,16 @@ class AppMatcherTest {
     }
 
     @Test
+    fun spanishNamesMatchWithOrWithoutTheirAccents() {
+        val spanish = listOf(InstalledApp("Cámara", "com.byd.camera"), InstalledApp("Calendario", "com.byd.calendar"), InstalledApp("Configuración", "com.byd.settings"))
+        assertEquals("Cámara", label(AppMatcher.find("cámara", spanish)))
+        assertEquals("Cámara", label(AppMatcher.find("camara", spanish)))
+        assertEquals("Configuración", label(AppMatcher.find("configuracion", spanish)))
+        assertEquals("Calendario", label(AppMatcher.find("abre la aplicación calendario", spanish)))
+        assertEquals("Cámara", label(AppMatcher.find("abre la cámara", spanish)))
+    }
+
+    @Test
     fun russianFillerWordsAreIgnored() {
         val russian = listOf(InstalledApp("Камера", "com.byd.camera"), InstalledApp("Календарь", "com.byd.calendar"))
         assertEquals("Камера", label(AppMatcher.find("открой приложение камера", russian)))

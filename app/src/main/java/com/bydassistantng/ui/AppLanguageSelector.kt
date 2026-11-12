@@ -31,7 +31,7 @@ fun Context.findActivity(): Activity? {
 }
 
 /**
- * The "App language" control: system default, English, Arabic, Russian, Polish or Indonesian. The language names are shown in
+ * The "App language" control: system default, English, Arabic, Russian, Polish, Indonesian or Spanish. The language names are shown in
  * their own language on purpose, so someone who can't read the current UI language can still find theirs.
  */
 @Composable
@@ -47,6 +47,7 @@ fun AppLanguageSelector(selected: AppLanguageChoice, onSelect: (AppLanguageChoic
                 AppLanguageChoice.RUSSIAN to stringResource(R.string.app_language_russian),
                 AppLanguageChoice.POLISH to stringResource(R.string.app_language_polish),
                 AppLanguageChoice.INDONESIAN to stringResource(R.string.app_language_indonesian),
+                AppLanguageChoice.SPANISH to stringResource(R.string.app_language_spanish),
             )
             options.forEachIndexed { index, (value, label) ->
                 SegmentedButton(
@@ -87,6 +88,7 @@ fun AssistantLanguage.label(): String = stringResource(
         AssistantLanguage.RUSSIAN -> R.string.language_russian
         AssistantLanguage.POLISH -> R.string.language_polish
         AssistantLanguage.INDONESIAN -> R.string.language_indonesian
+        AssistantLanguage.SPANISH -> R.string.language_spanish
     },
 )
 

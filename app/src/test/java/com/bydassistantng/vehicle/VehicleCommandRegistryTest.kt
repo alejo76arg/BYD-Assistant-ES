@@ -280,6 +280,8 @@ class VehicleCommandRegistryTest {
             assertEquals(c.labelPl, c.labelFor("pl"))
             assertTrue("${c.id} needs an Indonesian label", !c.labelId.isNullOrBlank())
             assertEquals(c.labelId, c.labelFor("id"))
+            assertTrue("${c.id} needs a Spanish label", !c.labelEs.isNullOrBlank())
+            assertEquals(c.labelEs, c.labelFor("es"))
             // Android reports Indonesian with its legacy code.
             assertEquals(c.labelId, c.labelFor("in"))
             // Any other language gets the English name.
