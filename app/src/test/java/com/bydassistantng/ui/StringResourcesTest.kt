@@ -64,9 +64,8 @@ class StringResourcesTest {
         // Spanish is written in the Latin script like English, so a missed translation is told by being the English
         // text. These are names, a bare unit, or a word the two share ("App", "Control", "Beta").
         val sameAsEnglish = setOf(
-            "app_language_english", "app_language_arabic", "app_language_russian", "app_language_polish",
-            "app_language_indonesian", "channel_beta", "settings_section_app", "group_control", "end_wait_value",
-            "sensitivity_value", "voice_channel_dip_value", "voice_channel_gain_value",
+    "app_language_english", "app_language_spanish", "app_language_arabic", "app_language_russian", "app_language_polish",
+    "app_language_indonesian", "channel_beta", "settings_section_app", "group_control", "end_wait_value",
         )
         for ((name, es) in spanish) {
             if (name in sameAsEnglish) continue
